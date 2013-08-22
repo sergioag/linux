@@ -131,7 +131,18 @@ ENTRY(startup_32)
 	movsl
 	movl pa(boot_params) + NEW_CL_POINTER,%esi
 	andl %esi,%esi
+
+#ifdef X86_COBALT_RAQ550
+	jnz 2f                  # New command line protocol
+	cmpw $(OLD_CL_MAGIC),OLD_CL_MAGIC_ADDR
+	jne 1f
+	movzwl OLD_CL_OFFSET,%esi
+	addl $(OLD_CL_BASE_ADDR),%esi
+2:
+#else
 	jz 1f			# No command line
+#endif
+
 	movl $pa(boot_command_line),%edi
 	movl $(COMMAND_LINE_SIZE/4),%ecx
 	rep

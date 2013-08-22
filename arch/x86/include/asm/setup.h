@@ -19,7 +19,10 @@
 
 #define PARAM_SIZE 4096		/* sizeof(struct boot_params) */
 
+#define OLD_CL_MAGIC_ADDR	0x90020
 #define OLD_CL_MAGIC		0xA33F
+#define OLD_CL_BASE_ADDR	0x90000
+#define OLD_CL_OFFSET		0x90022
 #define OLD_CL_ADDRESS		0x020	/* Relative to real mode data */
 #define NEW_CL_POINTER		0x228	/* Relative to real mode data */
 
