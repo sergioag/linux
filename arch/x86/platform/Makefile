@@ -1,5 +1,6 @@
 # Platform specific code goes here
 obj-y	+= ce4100/
+obj-y	+= cobalt/
 obj-y	+= efi/
 obj-y	+= geode/
 obj-y	+= goldfish/

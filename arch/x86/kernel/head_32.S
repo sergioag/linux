@@ -132,7 +132,7 @@ ENTRY(startup_32)
 	movl pa(boot_params) + NEW_CL_POINTER,%esi
 	andl %esi,%esi
 
-#ifdef X86_COBALT_RAQ550
+#ifdef CONFIG_X86_COBALT_RAQ550
 	jnz 2f                  # New command line protocol
 	cmpw $(OLD_CL_MAGIC),OLD_CL_MAGIC_ADDR
 	jne 1f
@@ -245,6 +245,12 @@ page_pde_offset = (__PAGE_OFFSET >> 20);
 	/* Do early initialization of the fixmap area */
 	movl $pa(initial_pg_fixmap)+PDE_IDENT_ATTR,%eax
 	movl %eax,pa(initial_page_table+0xffc)
+#endif
+
+#ifdef CONFIG_X86_COBALT_RAQ550
+	/* Set hardware_subarch for cobalt. The boot loader doesn't do it */
+	movl 5, %eax
+	movl %eax, pa(boot_params + BP_hardware_subarch)
 #endif
 
 #ifdef CONFIG_PARAVIRT

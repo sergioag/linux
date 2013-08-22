@@ -63,6 +63,12 @@ extern void x86_ce4100_early_setup(void);
 static inline void x86_ce4100_early_setup(void) { }
 #endif
 
+#ifdef CONFIG_X86_COBALT_RAQ550
+extern void x86_cobalt_early_setup(void);
+#else
+static inline void x86_cobalt_early_setup(void) { }
+#endif
+
 #ifndef _SETUP
 
 /*
