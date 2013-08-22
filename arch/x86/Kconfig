@@ -430,6 +430,16 @@ config X86_INTEL_CE
 	  This option compiles in support for the CE4100 SOC for settop
 	  boxes and media devices.
 
+config X86_COBALT_RAQ550
+	bool "Sun Cobal Raq550 support"
+	depends on X86_32
+	depends on X86_EXTENDED_PLATFORM
+	default n
+	---help---
+	  Select to build a kernel useable by the Sun Cobalt Raq550, which
+	  is a non-standard PC-like system without a BIOS. If you are using
+	  a standard PC, just say N here.
+
 config X86_WANT_INTEL_MID
 	bool "Intel MID platform support"
 	depends on X86_32
